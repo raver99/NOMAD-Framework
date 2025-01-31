@@ -14,6 +14,7 @@ This framework aims to provide opinionated assistance and solutions to mobile ap
 
 - Best practices for a healthy software development process
 - Concepts and implementation details for common mobile application features
+- Selected tools
 - Testing mobile apps
 
 ## Principles:
