@@ -11,6 +11,7 @@ From idea to app release, there are a lot of steps, involving many different rol
 This framework aims to provide opinionated assistance and solutions to mobile app related problems so that we don't end up reinventing the wheel each time we start developing a new mobile app project. Some of the practices extend beyond the specifics of mobile applications, to software development in general, but this is the focus right now.
   
 ## Aspects covered:
+
 - Best practices for a healthy software development process
 - Concepts and implementation details for common mobile application features
 - Testing mobile apps
@@ -20,6 +21,7 @@ This framework aims to provide opinionated assistance and solutions to mobile ap
 - Find good and easy to integrate solutions to common aspects of mobile app development
 - Try to minimize effort of setup, implement and maintain a solution
 - AI Assisted Development - Aim to use AI as assistance in each step of the process, from ideation and concepting
+- Focus on cross platform app development to minimize time and effort
 
 This is a theoretical framework which is platform agnostic. The principles, practices and solutons can be implemented in any mobile application framework.
 
@@ -27,6 +29,20 @@ This is a theoretical framework which is platform agnostic. The principles, prac
 Since this is my focus right now, the current tehnical implmenentation of the NOMAD Framework is NOMAD.Maui, which provides specifics for the .NET Maui platform.
 
 Head over to the repo to find out all the details [Link follwoing]
+
+# Framework
+
+## Index:
+
+## Process
+
+## Implementaton
+- Solutions
+  - On device error logging
+  - App Version management - updating users to newest app version
+
+## Testing
+
 
 # Licence
 
