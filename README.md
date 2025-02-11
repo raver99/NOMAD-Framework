@@ -29,7 +29,7 @@ This is a theoretical framework which is platform agnostic. The principles, prac
 # Platform specific implementation of NOMAD Framework
 Since this is my focus right now, the current tehnical implmenentation of the NOMAD Framework is NOMAD.Maui, which provides specifics for the .NET Maui platform.
 
-Head over to the repo to find out all the details [Link follwoing]
+Head over to the repo to find out all the details https://github.com/raver99/NOMAD.Maui
 
 # Framework
 
