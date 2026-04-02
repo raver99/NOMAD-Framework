@@ -33,17 +33,38 @@ Head over to the repo to find out all the details https://github.com/raver99/NOM
 
 # Framework
 
-## Index:
+## Index
 
-## Process
+### Process
 
-## Implementaton
-- Solutions
-  - On device error logging
-  - App Version management - updating users to newest app version
+| Topic | Description | Guide |
+|-------|-------------|-------|
+| Requirements Best Practices | How to structure, split, and consume requirements in a modern development process | [View](KnowledgeBase/Requirements/requirements-best-practices.md) |
 
-## Testing
+### Implementation
 
+| Topic | Description | Guide |
+|-------|-------------|-------|
+| On device error logging | *Coming soon* | |
+| App Version management | Updating users to newest app version | |
+
+### Testing
+
+| Topic | Description | Guide |
+|-------|-------------|-------|
+| *Coming soon* | | |
+
+### DevOps
+
+| Topic | Description | Guide |
+|-------|-------------|-------|
+| CI/CD Pipeline Strategies | Comparing pipeline architecture approaches for multi-platform mobile development | [View](KnowledgeBase/DevOps/pipeline-structuring-strategies.md) |
+
+### Claude Code
+
+| Topic | Description | Guide |
+|-------|-------------|-------|
+| AgentVibes | Text-to-Speech voice feedback for AI coding agent sessions | [View](KnowledgeBase/ClaudeCode/agent-vibes-tts-setup.md) |
 
 # Licence
 
