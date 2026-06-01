@@ -40,6 +40,7 @@ Head over to the repo to find out all the details https://github.com/raver99/NOM
 | Topic | Description | Guide |
 |-------|-------------|-------|
 | Requirements Best Practices | How to structure, split, and consume requirements in a modern development process | [View](KnowledgeBase/Requirements/requirements-best-practices.md) |
+| Spec-Driven Development | Evaluating frameworks that drive AI-assisted implementation from structured specs | [View](KnowledgeBase/SpecDrivenDevelopment/overview.md) |
 
 ### Implementation
 
@@ -65,6 +66,7 @@ Head over to the repo to find out all the details https://github.com/raver99/NOM
 | Topic | Description | Guide |
 |-------|-------------|-------|
 | AgentVibes | Text-to-Speech voice feedback for AI coding agent sessions | [View](KnowledgeBase/ClaudeCode/agent-vibes-tts-setup.md) |
+| Skills | Creating, organizing, and scaling a Claude Code skill library | [View](KnowledgeBase/ClaudeCode/claude-code-skills.md) |
 
 # Licence
 
