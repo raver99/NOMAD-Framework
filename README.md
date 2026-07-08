@@ -61,6 +61,13 @@ Head over to the repo to find out all the details https://github.com/raver99/NOM
 |-------|-------------|-------|
 | CI/CD Pipeline Strategies | Comparing pipeline architecture approaches for multi-platform mobile development | [View](KnowledgeBase/DevOps/pipeline-structuring-strategies.md) |
 
+### Publishing
+
+| Topic | Description | Guide |
+|-------|-------------|-------|
+| App Store Metadata Reference | All metadata, assets, and declarations required by the Apple App Store and Google Play (2026) | [View](KnowledgeBase/Publishing/app-store-metadata-reference.md) |
+| App Store Publishing Checklist | Fillable per-app worksheet covering both stores' listing requirements | [View](KnowledgeBase/Publishing/app-store-publishing-checklist.md) |
+
 ### Claude Code
 
 | Topic | Description | Guide |
