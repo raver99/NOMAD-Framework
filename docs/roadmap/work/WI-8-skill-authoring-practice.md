@@ -300,7 +300,9 @@ evals earn their cost.
 - [x] Build the validator: mechanical script plus the judgement-level skill over it
 - [x] Write the shared best-practices reference the creator and the validator both read
 - [x] Walk through `skill-creator` stage by stage and record what each stage is actually for
-- [ ] Capture Roland's personal writing preferences as an extension over `nomad-technical-writer`
+- [x] Capture the writing-style observations — they turned out to be general craft rather than
+      personal taste, so they went into `nomad-technical-writer` itself. No extension skill: the
+      audience question is asked per document rather than recorded in a profile
 - [ ] Run the baseline-first loop on a real skill, so the practice is exercised rather than described
 - [ ] Split the NOMAD.Maui plugin so skills become independently installable
 - [x] Research community skill-creation skills and compare them against the official one
