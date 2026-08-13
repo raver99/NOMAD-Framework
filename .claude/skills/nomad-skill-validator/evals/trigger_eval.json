@@ -1,0 +1,22 @@
+[
+  {"query": "i just finished the SKILL.md for our release-notes thing, can you look it over before i push it to the marketplace repo", "should_trigger": true},
+  {"query": "review my skill", "should_trigger": true},
+  {"query": "is this description too long? it's for a skill that handles our store metadata stuff and it's gotten kinda wordy", "should_trigger": true},
+  {"query": "check .claude/skills/nomad-maui-doctor against our authoring rules", "should_trigger": true},
+  {"query": "i changed the description on maui-devflow and added a references folder, does it still follow the conventions we agreed", "should_trigger": true},
+  {"query": "before I bump the plugin to 1.3.0 can you sanity check all the skills in plugins/nomad-maui-skills/skills/", "should_trigger": true},
+  {"query": "my SKILL.md references a doctor-checks skill but i renamed that ages ago, is anything else broken like that", "should_trigger": true},
+  {"query": "does this skill have too many ALWAYS and MUST NOT rules in it? feels heavy handed", "should_trigger": true},
+  {"query": "quality pass on the skill i wrote yesterday please", "should_trigger": true},
+  {"query": "the metadata.version in our skills says 1.1.0 but marketplace.json says 1.2.0 — is that a problem", "should_trigger": true},
+  {"query": "write me a skill that generates release notes from git log", "should_trigger": false},
+  {"query": "review the changes on this branch before i open the PR", "should_trigger": false},
+  {"query": "can you validate that our marketplace.json is well formed, i think i broke the plugins array", "should_trigger": false},
+  {"query": "check whether the markdown links in KnowledgeBase/Publishing are all still alive", "should_trigger": false},
+  {"query": "my slash command isn't showing up in the menu, any idea why", "should_trigger": false},
+  {"query": "review this subagent definition in agents/skill-reviewer.md and tell me if the examples are good", "should_trigger": false},
+  {"query": "the CI linter is failing on check_skill.py, can you fix the flake8 errors", "should_trigger": false},
+  {"query": "audit our repo for files that don't follow the naming convention", "should_trigger": false},
+  {"query": "turn the workflow we just did into a reusable skill", "should_trigger": false},
+  {"query": "is 300 characters actually the right ceiling for descriptions or should we measure it", "should_trigger": false}
+]

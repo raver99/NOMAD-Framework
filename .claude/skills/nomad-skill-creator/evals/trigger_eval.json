@@ -1,0 +1,22 @@
+[
+  {"query": "turn the workflow we just did into a reusable skill", "should_trigger": true},
+  {"query": "i keep explaining our app store screenshot rules to claude over and over, can we make that a skill", "should_trigger": true},
+  {"query": "create a skill for checking that a maui project has the right analyzers configured", "should_trigger": true},
+  {"query": "my skill basically never fires unless i type the slash command, how do i fix the triggering", "should_trigger": true},
+  {"query": "draft a SKILL.md for a thing that drafts release notes from closed work items", "should_trigger": true},
+  {"query": "add a new skill to the nomad-maui-skills plugin for running the doctor checks on CI", "should_trigger": true},
+  {"query": "we should have something reusable for the requirements format, every project redoes it", "should_trigger": true},
+  {"query": "improve the maui-devflow skill, it's gotten long and i think half of it is dead weight", "should_trigger": true},
+  {"query": "how do i make a skill", "should_trigger": true},
+  {"query": "i want claude to always follow our branching rules — is a skill the right way to do that or something else", "should_trigger": true},
+  {"query": "review my skill and tell me what's wrong with it", "should_trigger": false},
+  {"query": "check that all the skills in the plugin still pass validation before i tag a release", "should_trigger": false},
+  {"query": "add a slash command that opens the roadmap folder", "should_trigger": false},
+  {"query": "write a subagent that reviews pull requests for us", "should_trigger": false},
+  {"query": "set up an MCP server for our internal metrics api", "should_trigger": false},
+  {"query": "can you add a hook that runs the formatter after every edit", "should_trigger": false},
+  {"query": "write documentation explaining how our skills library is organised", "should_trigger": false},
+  {"query": "install the skill-creator plugin from the official marketplace", "should_trigger": false},
+  {"query": "what's the difference between a skill and a command in claude code", "should_trigger": false},
+  {"query": "bump the plugin version and update the changelog", "should_trigger": false}
+]

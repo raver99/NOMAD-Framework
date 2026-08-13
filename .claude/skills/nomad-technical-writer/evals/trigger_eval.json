@@ -1,0 +1,22 @@
+[
+  {"query": "write the on-device error logging guide for the knowledge base", "should_trigger": true},
+  {"query": "this section reads really generic and fluffy, can you tighten it up", "should_trigger": true},
+  {"query": "draft an article explaining why we landed on a 300 char description ceiling and what we rejected", "should_trigger": true},
+  {"query": "rewrite the readme intro, it's three paragraphs of nothing", "should_trigger": true},
+  {"query": "add a section to KnowledgeBase/DevOps/pipeline-structuring-strategies.md about self-hosted runners", "should_trigger": true},
+  {"query": "can you write up the release notes for 1.3.0 from the merged work items", "should_trigger": true},
+  {"query": "i need a short piece explaining the whys behind our testing strategy for the blog", "should_trigger": true},
+  {"query": "this doc hedges on everything, make it actually recommend something", "should_trigger": true},
+  {"query": "document the app store metadata decisions we made today", "should_trigger": true},
+  {"query": "the summary at the end just repeats the doc, fix that", "should_trigger": true},
+  {"query": "write a commit message for these changes", "should_trigger": false},
+  {"query": "add xml doc comments to the public methods in this class", "should_trigger": false},
+  {"query": "summarise this discussion into bullet points for me to paste into slack", "should_trigger": false},
+  {"query": "write a skill for generating documentation", "should_trigger": false},
+  {"query": "translate the requirements guide into german", "should_trigger": false},
+  {"query": "review this pull request description and tell me if it's clear enough", "should_trigger": false},
+  {"query": "create a work item for the branching strategy guide", "should_trigger": false},
+  {"query": "fix the broken relative links in the knowledge base", "should_trigger": false},
+  {"query": "what should we name this document", "should_trigger": false},
+  {"query": "convert this markdown table to html", "should_trigger": false}
+]

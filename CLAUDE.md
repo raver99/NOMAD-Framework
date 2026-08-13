@@ -40,6 +40,15 @@ NOMAD/
 - Tool selection and evaluation
 - Testing strategies for mobile apps
 
+## Two Kinds of Prose
+
+NOMAD publishes guides and articles, and they have different jobs:
+
+- **Knowledge base guide** — the *what* and *how*. Numbered sections, tables, rules. Read by lookup, repeatedly.
+- **Article** — the *why*. The reasoning behind a decision, what was rejected, what it cost. Read once, start to finish.
+
+They cross-reference rather than repeat, preserving one canonical source per topic: the rule lives in the guide, the argument for it lives in the article. See the `nomad-technical-writer` skill.
+
 ## Writing Style
 
 - Use clear, structured Markdown

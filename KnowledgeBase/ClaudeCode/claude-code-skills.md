@@ -5,6 +5,11 @@ This document explains how to build, organize, and scale **skills** in Claude Co
 
 > **A skill turns a repeated instruction into a callable capability. Use one when you keep pasting the same procedure into chat, or when a section of `CLAUDE.md` has grown into a workflow rather than a fact.**
 
+This document covers the **mechanism** — how skills are structured, discovered and scaled. The
+**rules NOMAD authors by**, and the testing practice behind them, are in
+[Skill Authoring Rules](skill-authoring-rules.md), which the `nomad-skill-creator` and
+`nomad-skill-validator` skills both read.
+
 ---
 
 ## 1. What Skills Are
@@ -125,7 +130,7 @@ Discovery is **language-model-based**: Claude matches your request against descr
 ### 5.1 The Budget
 
 - The total space for all descriptions scales at roughly **1% of the model's context window** (~2,000 tokens on a 200K model).
-- Each individual entry (`description` + `when_to_use`) is capped at **1,536 characters**.
+- Each individual entry (`description` + `when_to_use`) is capped at **1,536 characters** by Claude Code (`maxSkillDescriptionChars`). Note this is a *different limit from a different layer* than the portable Agent Skills spec, which caps `description` at **1,024** — a skill within Claude Code's cap can still fail spec validation.
 
 When the budget overflows, **all skill *names* are always kept**, but descriptions for the skills you invoke **least** are dropped first — so the skills you actually use keep their full text. A truncated description can strip the very keywords Claude needs to match your request.
 
@@ -188,7 +193,7 @@ Skills you always trigger yourself — deploys, migrations, DB operations — do
 
 ### 6.4 Keep Descriptions Lean
 
-Aim for **100–200 characters**. A description is for **routing**, not documentation — the full instructions live in the body. Quick audit for bloat:
+NOMAD's ceiling is **300 characters** for model-invocable skills — enough to enumerate trigger cases explicitly (Claude tends to *under*-trigger), while still fitting roughly 25 skills before trimming. It is a ceiling, not a target. See [Skill Authoring Rules §5](skill-authoring-rules.md) for the reasoning and the exemption for `disable-model-invocation` skills. A description is for **routing**, not documentation — the full instructions live in the body. Quick audit for bloat:
 
 ```bash
 find ~/.claude/skills .claude/skills -name "SKILL.md" -exec sh -c \
@@ -349,7 +354,7 @@ Skills are how NOMAD's principle of *not reinventing the wheel* shows up inside 
 ## 12. Summary
 
 1. **Skills load on demand; `CLAUDE.md` loads always.** Move procedures and reference material into skills; keep only standing facts in `CLAUDE.md`.
-2. **Description quality is everything** — discovery is pure language matching. Front-load keywords, stay specific, keep entries to 100–200 chars (hard cap 1,536).
+2. **Description quality is everything** — discovery is pure language matching. Front-load keywords, state triggering conditions rather than workflow steps, and keep entries within NOMAD's 300-char ceiling ([rules §5](skill-authoring-rules.md)).
 3. **Mind the ~1% listing budget.** Around 15–25 skills it starts trimming least-used descriptions; diagnose with `/doctor`, raise it with `skillListingBudgetFraction`/`SLASH_COMMAND_TOOL_CHAR_BUDGET`, and pull manual-only skills out with `disable-model-invocation: true`.
 4. **`allowed-tools` pre-approves, it does not restrict** — use `disallowed-tools` or deny rules to actually limit tool access.
 5. **Scope deliberately:** universal tools in `~/.claude/skills/`, project/platform patterns committed to `.claude/skills/`.
