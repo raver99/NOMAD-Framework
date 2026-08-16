@@ -2,9 +2,9 @@
 
 ## Purpose of This Document
 
-This document is the canonical reference for all metadata required to publish a mobile app on the Apple App Store (App Store Connect) and Google Play Store (Play Console). It covers text fields with exact character limits, graphic asset specifications with exact pixel dimensions, mandatory declarations and questionnaires, and required URLs — current as of July 2026, sourced from Apple's and Google's official documentation. Use it together with the fillable [App Store Publishing Checklist](app-store-publishing-checklist.md) when preparing a release.
+This document is the canonical reference for all metadata required to publish a mobile app on the Apple App Store (App Store Connect) and Google Play Store (Play Console). It covers text fields with character limits, graphic asset specifications with pixel dimensions, mandatory declarations and questionnaires, and required URLs. Use it together with the fillable [App Store Publishing Checklist](app-store-publishing-checklist.md) when preparing a release.
 
-> Figures are drawn from Apple's App Store Connect Help / developer.apple.com and Google's Play Console Help / developer.android.com. Store requirements change frequently — always re-verify limits at upload time.
+> **What this document holds and what it does not.** It records the *shape* of each store's listing — which fields exist, how each store indexes them, what the assets must look like. It does **not** record version numbers, enforcement deadlines or SDK minimums; those change on the vendors' schedules and a copied value is wrong within months. §4 lists the gates and points at the authoritative page for each. Re-verify asset dimensions at upload time — Apple adds device classes every generation.
 
 ---
 
@@ -57,7 +57,7 @@ Both stores separate listing metadata into (1) text fields, (2) graphic/visual a
 - **Do not pre-round corners or add shadows/gloss** — iOS applies its "squircle" mask automatically. Baking in your own corners produces a broken double-radius look.
 - Upload the single 1024×1024 master; smaller sizes are derived automatically.
 
-**Screenshots** — 1–10 per device type, .jpeg/.jpg/.png, no transparency. Must match Apple's exact pixel dimensions per display class — an off-by-one export triggers "The dimensions of one or more screenshots are wrong."
+**Screenshots** — 1–10 per device type, .jpeg/.jpg/.png, no transparency. [1] Must match Apple's exact pixel dimensions per display class — an off-by-one export triggers "The dimensions of one or more screenshots are wrong."
 
 iPhone display classes (portrait; landscape is the reverse):
 
@@ -139,17 +139,17 @@ Other platforms: **Mac** 1280×800, 1440×900, 2560×1600, or 2880×1800 (16:10)
 (Managed under Grow users → Store presence → Main store listing → Graphics)
 
 **App icon (required to publish)**
-- **512×512 px**, **32-bit PNG with alpha**, **≤1024 KB (1 MB)**.
+- **512×512 px**, **32-bit PNG with alpha**, **≤1024 KB (1 MB)**. [2]
 - Perfect square with **no rounded corners applied by you** — Google dynamically applies rounded corners and shadows. (As of March 31, 2026, Play renders icons with a ~30% corner radius; keep key elements within ~15–18% internal padding.) No badges/ranking/price text.
 
 **Feature graphic (required to publish)**
-- **1024×500 px**, **JPEG or 24-bit PNG, no alpha/transparency.** Used as the cover for the preview video and in promotional placements. Keep key content away from edges; no store badges, no device frames.
+- **1024×500 px**, **JPEG or 24-bit PNG, no alpha/transparency.** [2] Used as the cover for the preview video and in promotional placements. Keep key content away from edges; no store badges, no device frames.
 
 **Screenshots**
 - **Minimum to publish:** two screenshots across different device types.
 - **Maximum:** up to **8 per supported device type** (phones; 7" and 10" tablets; Chromebooks; Android TV; Wear OS; Android Automotive OS; Android XR).
 - **Format:** JPEG or **24-bit PNG (no alpha).** Solid background — transparency is rejected.
-- **Dimensions:** **min 320 px, max 3840 px** per side; the maximum dimension can't be more than twice the minimum (effective aspect-ratio cap, keeping assets within the 16:9 ↔ 9:16 family). Community standard for phones is 1080×1920 portrait.
+- **Dimensions:** **min 320 px, max 3840 px** per side; the maximum dimension can't be more than twice the minimum [2] (effective aspect-ratio cap, keeping assets within the 16:9 ↔ 9:16 family). Community standard for phones is 1080×1920 portrait.
 - **Large-screen recommendation eligibility:** at least 4 screenshots at ≥1080 px, 16:9 landscape (≥1920×1080) or 9:16 portrait (≥1080×1920).
 - **Device-specific:** Wear OS ≥1 screenshot at 1:1, min 384×384, no frames/transparency; Android TV requires ≥1 TV screenshot plus a **TV banner (1280×720, JPEG/24-bit PNG no alpha)**; Android XR 4–8 screenshots, 8:5, ≤8 MB each.
 - Text overlays allowed; keep key content centered (Google may crop). Add **alt text (≤140 chars)** per asset for accessibility.
@@ -184,26 +184,51 @@ Other platforms: **Mac** 1280×800, 1440×900, 2560×1600, or 2880×1800 (16:10)
 | Support email | ✅ Required (developer contact) |
 | Website / phone | Optional |
 
-### 3.5 Platform/SDK Requirements That Gate Publishing
-
-These are binary/technical requirements, but they block store submission, so they belong in the release checklist:
-
-- **Target API level 35 (Android 15):** Since **August 31, 2025**, all new apps and updates must target **API level 35 or higher** (Wear OS/Android Automotive/Android TV: API 34+). Non-compliant apps cannot publish updates and are hidden from new users on newer OS versions.
-- **16 KB page-size requirement:** Since **November 1, 2025**, all new apps and updates targeting Android 15 (API 35)+ must support 16 KB page sizes. **This applies to any cross-platform framework that ships native `.so` libraries** (e.g. .NET MAUI's `libmonodroid.so` and runtime libraries, Flutter, React Native) — "apps with no native code" exemption does not apply. Build with an SDK version that produces 16 KB-aligned `.so` files and verify in Play Console's App bundle explorer (look for `PAGE_ALIGNMENT_16K`).
-- **Play Billing Library 7+** required for new apps/updates using in-app purchases (since Aug 31, 2025).
-- **Developer identity verification** (government ID) required for accounts; **Play Integrity API** replaced the deprecated SafetyNet.
-
-### 3.6 Localization
+### 3.5 Localization
 
 Metadata (title, short/full description, release notes, screenshots, feature graphic, video) is localizable per language. Category, contact details, and privacy policy remain constant across custom store listings. Up to 50 custom store listings. The Metadata policy applies to **all** translations.
 
 ---
 
-## 4. Recommended Publishing Workflow
+## 4. Publishing Gates — Check These Per Release
+
+Both stores gate submission on build and account requirements that are not metadata. They change on
+the vendors' schedules, and a copied version number or deadline is wrong within months.
+
+> **This section carries no numbers or dates on purpose.** It records *which gates exist* and *where
+> the answer is authoritative*. Read the current value from the source at release time.
+
+| Gate | Store | What it blocks | Read the current requirement at |
+|------|-------|----------------|--------------------------------|
+| Minimum target API level | Google | New apps and updates; existing apps stop reaching new users on newer OS versions | [Target API level requirements](https://developer.android.com/google/play/requirements/target-sdk) |
+| 16 KB memory page support | Google | Updates, for apps targeting recent API levels on 64-bit devices | [Support 16 KB page sizes](https://developer.android.com/guide/practices/page-sizes) |
+| Play Billing Library version | Google | New apps and updates using in-app purchases | [Play Billing Library release notes](https://developer.android.com/google/play/billing/release-notes) |
+| Developer identity verification | Google | The account, not the build | Play Console account settings |
+| Minimum Xcode and SDK version | Apple | Uploads to App Store Connect | [Upcoming requirements](https://developer.apple.com/news/upcoming-requirements/) |
+| Age-rating questionnaire responses | Apple | Update submissions when unanswered | App Store Connect → App Information |
+| Privacy manifests for required-reason APIs | Apple | Uploads, including reasons used by third-party SDKs | [Upcoming requirements](https://developer.apple.com/news/upcoming-requirements/) |
+
+Two things about these gates are stable enough to record, because they are structural rather than
+scheduled:
+
+- **Cross-platform frameworks are not exempt from the 16 KB requirement.** .NET MAUI (`libmonodroid.so`
+  and the runtime libraries), Flutter and React Native all ship native `.so` libraries, so the "apps
+  with no native code" exemption does not apply. Build with an SDK version that produces 16 KB-aligned
+  libraries and verify in Play Console's App bundle explorer (look for `PAGE_ALIGNMENT_16K`).
+- **Google's target API rule has two thresholds, not one** — a higher one for new apps and updates, and
+  a lower one that existing apps must meet to stay visible to new users. Extensions are requested
+  through Play Console.
+
+Track the current values per release in the
+[App Store Publishing Checklist](app-store-publishing-checklist.md) rather than here.
+
+---
+
+## 5. Recommended Publishing Workflow
 
 **Stage 1 — Before you build the listing (these gate submission):**
 1. **Apple:** Answer the updated **age-rating questionnaire** (blocks update submissions if missing). Set **`ITSAppUsesNonExemptEncryption`** in `Info.plist` (almost always `false` for a standard app using HTTPS) to bypass the repeated compliance prompt.
-2. **Google:** Confirm the Android build **targets API level 35** and produces **16 KB-aligned native libraries**; verify in the App bundle explorer. Complete the **Financial features declaration**, **Data safety form**, **IARC content rating**, **Target audience**, **Ads**, and **App access** declarations, and add a valid **privacy policy URL**.
+2. **Google:** Confirm the Android build meets the **current minimum target API level** (§4) and produces **16 KB-aligned native libraries**; verify in the App bundle explorer. Complete the **Financial features declaration**, **Data safety form**, **IARC content rating**, **Target audience**, **Ads**, and **App access** declarations, and add a valid **privacy policy URL**.
 
 **Stage 2 — Produce assets once, size per store:**
 3. Design **one 1024×1024 icon master with a solid (opaque) background**. Apple: export with **no alpha**. Google: export 512×512 **32-bit PNG with alpha** (≤1 MB). Never round corners yourself on either store.
@@ -221,22 +246,39 @@ Metadata (title, short/full description, release notes, screenshots, feature gra
 
 ---
 
-## 5. Caveats
+## 6. Caveats
 
-- **Official vs. secondary sources:** Character limits, questionnaire content, declaration deadlines, and Google's screenshot ranges are taken from Apple's and Google's own documentation. Apple adds device classes with each iPhone/iPad generation — always re-verify screenshot dimensions in App Store Connect at upload time.
-- **16 KB extension date:** Community reports mention a Play Console-level extension to ~May 2026 for existing-app updates, but this is not officially confirmed — verify in your own Play Console. The Nov 1, 2025 baseline for apps targeting Android 15+ is official.
-- **File-size caps:** Apple publishes no hard per-screenshot file-size cap (practical guidance <8 MB); Google's official 8 MB per-file cap is stated explicitly only for Android XR — treat a universal 8 MB rule as a safe convention, not a documented limit.
-- **Self-reported declarations:** Both Apple's privacy labels and Google's Data safety form are self-declared but enforced on discrepancy (Google reported blocking 1.75M+ policy-violating apps and banning 80,000+ developer accounts in 2025). Declare accurately.
-- This reference covers **metadata and store-listing requirements** only — not the full App Review Guidelines / Play Developer Program Policies, binary technical requirements beyond §3.5, or pricing/tax setup.
+- **This document holds shape, not schedules.** Which fields exist, how each store indexes them, and what the assets must look like are durable. Version numbers, deadlines and enforcement dates are not recorded here at all — §4 points at the vendor pages instead. A date copied into a knowledge base is wrong within months and reads as authoritative the whole time.
+- **What is sourced and what is not:** claims carrying a bracketed reference were verified against the vendors' own documentation on the date in the References table. Everything else — including Apple's text-field character limits (§2.1), the app preview video specifications (§2.2), and Google's title and full-description limits (§3.1) — has **not** been verified against a primary source. Treat those as working assumptions.
+- **Apple device classes change every generation.** Re-verify screenshot dimensions in App Store Connect at upload time; §2.2 records what was required on the retrieval date, not a stable specification.
+- **File-size caps:** Apple publishes no hard per-screenshot file-size cap (practical guidance <8 MB); Google's official 8 MB per-file cap is stated explicitly only for Android XR — treat a universal 8 MB rule as a safe convention, not a documented limit. *Unsourced.*
+- **Self-reported declarations:** Both Apple's privacy labels and Google's Data safety form are self-declared but enforced on discrepancy. Declare accurately.
+- This reference covers **metadata and store-listing requirements** only — not the full App Review Guidelines / Play Developer Program Policies, the build requirements behind the gates in §4, or pricing/tax setup.
 
 ---
 
-## 6. Summary
+## 7. Summary
 
 1. **Apple indexes only 160 characters** (name + subtitle + hidden keyword field) and ignores the description; **Google indexes everything** (title + short + full description) and has no keyword field — write copy per store.
-2. **Apple validates screenshots to the exact pixel**; lead with 6.9" iPhone (1320×2868) and 13" iPad (2064×2752). **Google accepts ranges** but additionally requires a 1024×500 feature graphic.
+2. **Apple validates screenshots to the exact pixel**; lead with 6.9" iPhone and 13" iPad. **Google accepts ranges** but additionally requires a 1024×500 feature graphic.
 3. **Icons:** one opaque 1024×1024 master; Apple gets no-alpha PNG, Google gets 512×512 PNG *with* alpha. Never round corners yourself.
-4. **Declarations gate submission:** Apple's new age-rating questionnaire (deadline Jan 31, 2026) and privacy labels; Google's Data safety form, IARC rating, target audience, ads, app access, and the Financial features declaration (mandatory for every app since Oct 30, 2025).
-5. **Cross-platform frameworks shipping native libraries** (MAUI, Flutter, React Native) must meet Google's target API 35 and 16 KB page-size requirements or updates are blocked.
-6. **Audit third-party SDKs before every release** — their data collection must be declared in both stores' privacy disclosures.
-7. Use the fillable [App Store Publishing Checklist](app-store-publishing-checklist.md) to track all of the above per release.
+4. **Declarations gate submission:** Apple's age-rating questionnaire and privacy labels; Google's Data safety form, IARC rating, target audience, ads, app access, and the Financial features declaration.
+5. **Builds gate submission too**, on both stores — minimum Xcode/SDK on Apple, target API level and 16 KB page support on Google. §4 says where to read the current values; do not trust a version or date quoted anywhere else.
+6. **Cross-platform frameworks shipping native libraries** (MAUI, Flutter, React Native) are not exempt from Google's 16 KB page-size requirement.
+7. **Audit third-party SDKs before every release** — their data collection must be declared in both stores' privacy disclosures.
+8. Use the fillable [App Store Publishing Checklist](app-store-publishing-checklist.md) to track all of the above per release.
+
+---
+
+## References
+
+| # | Source | Tier | Retrieved |
+|---|--------|------|-----------|
+| 1 | [Apple — Screenshot specifications](https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications/) | primary | 2026-08-16 |
+| 2 | [Google Play — Preview asset specifications](https://support.google.com/googleplay/android-developer/answer/9866151) | primary | 2026-08-16 |
+
+The gate sources in §4 are deliberately unnumbered and undated. They are pointers to read at release
+time, not claims this document makes.
+
+Full record, including the claims that could not be sourced:
+[`docs/research/app-store-metadata-source-backfill.md`](../../docs/research/app-store-metadata-source-backfill.md).
