@@ -1,12 +1,17 @@
 {
   "name": "nomad-knowledge",
   "displayName": "NOMAD Knowledge Management",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "Research that records its sources, and a capture step that files the durable findings into a knowledge base",
   "author": {
     "name": "Roland Huhn"
   },
-  "repository": "https://github.com/rolandhuhn/NOMAD",
+  "repository": "https://github.com/raver99/NOMAD-Framework",
   "license": "MIT",
-  "keywords": ["research", "knowledge-base", "documentation", "sources"]
+  "keywords": [
+    "research",
+    "knowledge-base",
+    "documentation",
+    "sources"
+  ]
 }

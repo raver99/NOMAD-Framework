@@ -11,7 +11,7 @@ metadata:
 
 Read `BACKLOG.md` at the project root, plus any detail files it links to. The file's header states
 its own format and section rules; follow those. The convention is described in
-[A Backlog in the Repository](https://github.com/rolandhuhn/NOMAD/blob/main/KnowledgeBase/WorkingWithAI/backlog-in-the-repository.md).
+[A Backlog in the Repository](https://github.com/raver99/NOMAD-Framework/blob/main/KnowledgeBase/WorkingWithAI/backlog-in-the-repository.md).
 
 ## Report before you edit
 

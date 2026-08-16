@@ -234,8 +234,15 @@ be able to adopt it the way it adopts a linter configuration.
 | Asset | Does |
 |-------|------|
 | A research skill | Sets depth, prefers primary sources, escalates past blocked pages, writes the layered record |
-| A capture step | Takes a record, decides placement, writes the entry with its references, updates the index |
+| A capture step | Takes a record, decides placement — including *nowhere* — writes the entry with its references, updates the index |
 | Document conventions | A references table in the template, so an entry without sources looks wrong |
+| A seeded index | An index file whose header states the conventions, installed once, so nothing has to be inferred |
+
+> **An installable asset reads the project's conventions rather than carrying its own.** The capture
+> step establishes where documents live, how they are grouped and named, and where the index is by
+> looking at the base that already exists. Where the two disagree, the project wins — it is what
+> people there actually read. An asset that hard-codes one project's layout only works in that
+> project.
 
 In this repository these are the `nomad-researcher` skill and the `/add-knowledge` command. They are
 connected by the record file rather than by a direct reference: research writes a record to

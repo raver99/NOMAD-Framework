@@ -24,7 +24,7 @@ rules — follow that rather than any backlog convention carried in from elsewhe
 this skill ever disagree, the file wins; it is what the project actually uses.
 
 The convention is described in
-[A Backlog in the Repository](https://github.com/rolandhuhn/NOMAD/blob/main/KnowledgeBase/WorkingWithAI/backlog-in-the-repository.md).
+[A Backlog in the Repository](https://github.com/raver99/NOMAD-Framework/blob/main/KnowledgeBase/WorkingWithAI/backlog-in-the-repository.md).
 
 ## What this skill adds
 

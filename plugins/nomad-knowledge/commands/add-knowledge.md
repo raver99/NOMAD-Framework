@@ -1,6 +1,36 @@
-You are adding knowledge to the NOMAD knowledge base. NOMAD is a documentation project (not code) containing best practices and solutions for modern mobile application development.
+Fold a finding into this project's knowledge base, as a new document or a merge into an existing one.
 
 Your input is: $ARGUMENTS
+
+---
+
+## Step 0: The Knowledge Base States Its Own Conventions
+
+Every project files knowledge differently. Establish this project's conventions before writing
+anything, and follow them rather than any convention carried in from elsewhere. Where this command
+and the project disagree, the project wins — it is what people there actually read.
+
+**Read the index header first.** `KNOWLEDGE.md` at the project root, or whatever file indexes the
+documents, states where documents go, how they are named, what shape they take and what a reference
+carries. Where a header exists, it is the specification and nothing below applies. A header states
+its rules whether the index holds fifty documents or none, so an empty base is not a problem to solve.
+
+**Where no header exists, infer from what is there** — and say that you are inferring:
+
+| What | How to find it |
+|------|----------------|
+| **Root** | The directory holding the documents — `KnowledgeBase/`, `docs/`, `wiki/` or the repository root. Whichever already has topic documents in it. |
+| **Grouping** | Whether documents sit in per-topic subdirectories or flat, and how those are named (PascalCase, kebab-case, none). |
+| **Filenames** | The style already in use, taken from sibling files rather than assumed. |
+| **Index** | The file listing the documents — a README section, a `SUMMARY.md`, an index page — and the exact row format it uses. There may be none. |
+
+State what you found in one line before proceeding, so a wrong reading is cheap to correct:
+*"Filing into `KnowledgeBase/<PascalCase>/kebab-case.md`, indexed in README.md under a per-category
+table — inferred, this project has no conventions header."*
+
+**Where nothing exists at all**, stop and point at `nomad-knowledge-setup`, which installs a seeded
+`KNOWLEDGE.md` whose header carries the conventions. Do not invent a layout — a layout invented in
+one conversation is a layout no other project shares.
 
 ---
 
@@ -14,27 +44,32 @@ If a file path is provided but the file does not exist or cannot be read, stop a
 
 ---
 
-## Step 2: Analyze Content and Determine Placement
+## Step 2: Decide Where It Lands — Including Nowhere
 
-Analyze the source material and determine:
+Not everything worth finding is worth filing. Work through the destinations in order and stop at the
+first that fits:
 
-1. **Topic**: What specific topic does this content address?
-2. **Category**: Which top-level NOMAD framework category does it belong to? The current categories in the README index are:
-   - **Process** — development process practices (requirements, planning, workflow)
-   - **Implementation** — common mobile feature implementations (error logging, version management, etc.)
-   - **Testing** — testing strategies for mobile apps
-   - **Working with AI** — working with AI agents, domain agnostic (knowledge management, research, validation, tracking work)
-   - **Claude Code** — Claude Code specific tools and extensions
-   - A new top-level category may be created if none of the above fit. Use judgment.
+1. **An existing document on this topic.** Merge into it. One canonical source per topic is what makes
+   a knowledge base usable; a second document on the same subject makes both untrustworthy. Check for
+   one before concluding the topic is new.
+2. **A new document**, when the subject is genuinely new *and* there is enough to say to fill one.
+3. **Nowhere — it stays in the research record.** The finding is durable but too small to carry a
+   document, and no existing document is the right home. Say so and stop. The record is the holding
+   area until a topic accumulates enough to be worth writing.
 
-3. **Directory**: Check the existing directories under `KnowledgeBase/` to see if an appropriate one already exists. Directory names use **PascalCase** (e.g., `Requirements`, `ClaudeCode`, `Solutions`).
+❌ **Do not create a stub document** to hold a single line. An index entry pointing at three sentences
+costs a reader a navigation for nothing.
 
-4. **File**: Determine the target filename using **lowercase-with-hyphens** (e.g., `error-logging-strategy.md`). Check if a file on this topic already exists — if so, the content should be merged into the existing file rather than creating a duplicate. Remember: **one canonical source of truth per topic**.
+❌ **Do not create a general notes or miscellaneous document** for findings that fit nowhere. It
+absorbs everything, is read by nobody, and removes the pressure that would otherwise produce a real
+topic document.
 
-Briefly tell the user:
-- Where the content will be placed (directory + filename)
-- Whether this is a new file or an update to an existing one
-- Which README index category it falls under
+Where a document is warranted, determine the topic, the grouping it belongs under, and the filename —
+all in the conventions established in Step 0. Then tell the user, briefly:
+
+- Where the content will be placed, or that it is staying in the record and why
+- Whether this is a new document or a merge
+- Which index section it falls under, if the project keeps an index
 
 ---
 
@@ -53,15 +88,16 @@ Do not research inline. Findings produced without a recorded source reproduce th
 
 ---
 
-## Step 4: Create or Update the Knowledge Base File
+## Step 4: Create or Update the Document
 
-### For NEW files, follow this structure:
+Match the structure of the documents already in the base. Where the base is empty or inconsistent, the
+following is a reasonable default:
 
 ```
 # <emoji> <Topic Title> – <Descriptive Subtitle>
 
 ## Purpose of This Document
-<2-4 sentences explaining what this document covers and who it helps. Mention relevance to mobile development, AI-assisted workflows, or cross-platform concerns where applicable.>
+<2-4 sentences explaining what this document covers and who it helps.>
 
 ---
 
@@ -120,9 +156,8 @@ Do not research inline. Findings produced without a recorded source reproduce th
 - Every external claim carries a numbered reference into the References table; claims that are the project's own judgement say so in the sentence rather than citing nothing
 - Reference tiers are the ones `nomad-researcher` defines: **primary** (the thing itself), **live state** (the thing right now), **secondary** (someone describing it)
 - Retrieved dates come from the research record, not from the day the document is written
-- Keep content **practical over theoretical**, **opinionated** (make clear recommendations), and **platform agnostic**
-- Consider **AI-assisted development** as a first-class concern where relevant
-- **Cross-reference** related NOMAD documents rather than duplicating their content (e.g., "See [Requirements Best Practices](../Requirements/requirements-best-practices.md)")
+- Keep content **practical over theoretical** and **opinionated** — make clear recommendations
+- **Cross-reference** related documents rather than duplicating their content
 
 ### For EXISTING files:
 - Read the existing file first
@@ -134,32 +169,25 @@ Do not research inline. Findings produced without a recorded source reproduce th
 
 ---
 
-## Step 5: Update the README Index
+## Step 5: Update the Index
 
-Open `README.md` and add the new topic to the appropriate table in the Framework Index section (between the `# Framework` heading and the `# Licence` heading).
+If the project keeps an index (Step 0), add the document to it in the row format already in use. Match
+the existing rows rather than introducing a format.
 
-The index uses tables per category with this format:
+- Add a row to the matching section
+- If a new section is needed, follow the shape of the existing ones
+- Keep descriptions to one short sentence
 
-```
-### <Category Name>
-
-| Topic | Description | Guide |
-|-------|-------------|-------|
-| <Topic name> | <Short description> | [View](<relative path to file>) |
-```
-
-- Add a new row to the matching category table
-- If a new category is needed, add a new `### <Category>` heading with a fresh table following the same format
-- Keep descriptions concise (one short sentence)
+If the project keeps no index, skip this step and say so — do not create one unasked.
 
 ---
 
 ## Step 6: Present Results
 
 Summarize what was done:
-- **File created/updated**: full path
-- **Category**: where it was placed and why
-- **README updated**: what was added to the index
+- **File created/updated**: full path — or that the finding stayed in the record, and why
+- **Placement**: where it went and on what grounds
+- **Index updated**: what was added, or that the project keeps no index
 - **Evidence**: how many references the document now carries, their tiers, and any claim left unsourced
 - **Record**: the research record this came from, if there was one
 - **Brief content summary**: 2-3 sentence overview of what the document covers

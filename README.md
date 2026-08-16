@@ -89,7 +89,7 @@ NOMAD is also a plugin marketplace. The assets it uses to produce this knowledge
 into any other project:
 
 ```shell
-/plugin marketplace add rolandhuhn/NOMAD
+/plugin marketplace add raver99/NOMAD-Framework
 /plugin install nomad-knowledge@nomad
 /plugin install nomad-skill-authoring@nomad
 /plugin install nomad-backlog@nomad
@@ -97,7 +97,7 @@ into any other project:
 
 | Plugin | Contains | For |
 |--------|----------|-----|
-| `nomad-knowledge` | `nomad-researcher` skill, `add-knowledge` command | Research that records its sources, and capture that files the durable findings |
+| `nomad-knowledge` | `nomad-knowledge-setup`, `nomad-researcher` skills, `add-knowledge` command | Research that records its sources, and capture that files the durable findings |
 | `nomad-skill-authoring` | `nomad-skill-creator`, `nomad-skill-validator` skills | Writing and validating Claude Code skills |
 | `nomad-backlog` | `nomad-backlog-capture`, `nomad-backlog-groom` skills | Tracking work in one Markdown file in the repository |
 

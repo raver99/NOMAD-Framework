@@ -2,7 +2,7 @@
 name: nomad-researcher
 description: Use when researching a topic, evaluating tools or approaches, checking how something actually works, or verifying a claim before relying on it. Also when a decision needs authoritative backing, or when web results look thin, paraphrased or blocked.
 metadata:
-  version: 0.3.0
+  version: 0.5.0
 ---
 
 # Researcher
@@ -140,9 +140,9 @@ from a secondary source" tells a reader exactly how much weight to place on it.
 Research worth doing is worth keeping. Once the record exists, offer to fold the durable parts into
 the project's knowledge base, carrying the sources and their tiers across.
 
-Which step does that depends on the project. Where a capture step is installed — `/add-knowledge` in
-NOMAD — name it and hand the record path to it. Where none is, say so and leave the record as the
-place the knowledge currently lives, so nobody assumes it was filed.
+Which step does that depends on the project. Where a capture step is installed — `/add-knowledge`,
+which ships alongside this skill — name it and hand the record path to it. Where none is, say so and
+leave the record as the place the knowledge currently lives, so nobody assumes it was filed.
 
 The two are separate acts on purpose: the record is what was found on a given day, the knowledge base
 entry is what the project now holds to be true. Findings that are situational stay in the record.

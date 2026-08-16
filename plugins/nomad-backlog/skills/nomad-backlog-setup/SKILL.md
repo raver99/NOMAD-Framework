@@ -10,8 +10,9 @@ metadata:
 # Set Up the Backlog
 
 Installs two things: `BACKLOG.md` at the project root, and a short section in `CLAUDE.md` stating
-the convention. Both come from this plugin's `assets/` directory — `../../assets/BACKLOG.md` and
-`../../assets/CLAUDE-backlog-section.md` relative to this file. Copy them; do not retype them from
+the convention. Both ship in this plugin, as `${CLAUDE_PLUGIN_ROOT}/assets/BACKLOG.md` and
+`${CLAUDE_PLUGIN_ROOT}/assets/CLAUDE-backlog-section.md` (`../../assets/` relative to this file, if
+it was copied out of its plugin). Copy them; do not retype them from
 memory, or the project gets a paraphrase that drifts from what every other project has.
 
 This runs once per project, so treat everything below as guarding against a second run.
@@ -45,7 +46,7 @@ position, that IDs are never reused. It contains no instruction to behave a cert
 add one** — an agent told to watch for things worth capturing interrupts constantly, gets tuned out,
 and taxes every conversation in the project whether or not it touches the backlog. If the user asks
 for proactive capture, tell them that was considered and rejected, and point at
-[the guide](https://github.com/rolandhuhn/NOMAD/blob/main/KnowledgeBase/WorkingWithAI/backlog-in-the-repository.md).
+[the guide](https://github.com/raver99/NOMAD-Framework/blob/main/KnowledgeBase/WorkingWithAI/backlog-in-the-repository.md).
 
 ## 3. Report
 
