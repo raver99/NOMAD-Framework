@@ -1,0 +1,12 @@
+{
+  "name": "nomad-skill-authoring",
+  "displayName": "NOMAD Skill Authoring",
+  "version": "0.1.0",
+  "description": "Write and validate Claude Code skills against a canonical rule set",
+  "author": {
+    "name": "Roland Huhn"
+  },
+  "repository": "https://github.com/rolandhuhn/NOMAD",
+  "license": "MIT",
+  "keywords": ["skills", "authoring", "validation"]
+}

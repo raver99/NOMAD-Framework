@@ -1,0 +1,1 @@
+../../plugins/nomad-knowledge/commands/add-knowledge.md

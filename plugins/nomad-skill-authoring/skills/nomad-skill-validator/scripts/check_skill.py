@@ -114,7 +114,7 @@ def check_description(fields, report):
             f"{len(description)} chars exceeds the {DESCRIPTION_CEILING} ceiling "
             "(§5.2). Exempt only with disable-model-invocation: true",
         )
-    if not description.lower().startswith("use when"):
+    if not exempt and not description.lower().startswith("use when"):
         report.warn("description-triggers", 'Should start with "Use when" (§5.1)')
     for marker in WORKFLOW_MARKERS:
         if re.search(marker, description, re.I):

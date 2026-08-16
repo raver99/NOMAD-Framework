@@ -42,6 +42,13 @@ Head over to the repo to find out all the details https://github.com/raver99/NOM
 | Requirements Best Practices | How to structure, split, and consume requirements in a modern development process | [View](KnowledgeBase/Requirements/requirements-best-practices.md) |
 | Spec-Driven Development | Evaluating frameworks that drive AI-assisted implementation from structured specs | [View](KnowledgeBase/SpecDrivenDevelopment/overview.md) |
 
+### Working with AI
+
+| Topic | Description | Guide |
+|-------|-------------|-------|
+| Knowledge Management with AI | What to keep from AI-assisted work, where it goes, and how it stays checkable | [View](KnowledgeBase/WorkingWithAI/knowledge-management-with-ai.md) |
+| A Backlog in the Repository | Tracking work and ideas in one Markdown file an agent can read, with no external tracker | [View](KnowledgeBase/WorkingWithAI/backlog-in-the-repository.md) |
+
 ### Implementation
 
 | Topic | Description | Guide |
@@ -75,6 +82,27 @@ Head over to the repo to find out all the details https://github.com/raver99/NOM
 | AgentVibes | Text-to-Speech voice feedback for AI coding agent sessions | [View](KnowledgeBase/ClaudeCode/agent-vibes-tts-setup.md) |
 | Skills | Creating, organizing, and scaling a Claude Code skill library | [View](KnowledgeBase/ClaudeCode/claude-code-skills.md) |
 | Skill Authoring Rules | The canonical rule set for writing, testing and reviewing skills | [View](KnowledgeBase/ClaudeCode/skill-authoring-rules.md) |
+
+# Plugins
+
+NOMAD is also a plugin marketplace. The assets it uses to produce this knowledge base are installable
+into any other project:
+
+```shell
+/plugin marketplace add rolandhuhn/NOMAD
+/plugin install nomad-knowledge@nomad
+/plugin install nomad-skill-authoring@nomad
+/plugin install nomad-backlog@nomad
+```
+
+| Plugin | Contains | For |
+|--------|----------|-----|
+| `nomad-knowledge` | `nomad-researcher` skill, `add-knowledge` command | Research that records its sources, and capture that files the durable findings |
+| `nomad-skill-authoring` | `nomad-skill-creator`, `nomad-skill-validator` skills | Writing and validating Claude Code skills |
+| `nomad-backlog` | `nomad-backlog-capture`, `nomad-backlog-groom` skills | Tracking work in one Markdown file in the repository |
+
+The practice these implement is documented in
+[Knowledge Management with AI](KnowledgeBase/WorkingWithAI/knowledge-management-with-ai.md).
 
 # Licence
 
