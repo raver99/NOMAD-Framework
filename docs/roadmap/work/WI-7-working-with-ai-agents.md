@@ -3,7 +3,7 @@ status: planned
 type: feature
 priority: high
 epic: EP-AICollaboration
-updated: 2026-08-11
+updated: 2026-08-16
 ---
 
 # WI-7 — Working with AI agents
@@ -48,6 +48,9 @@ The initial set, to be refined before anything is written:
   and which stays human.
 - **Verification and trust** — how a claim gets checked, what evidence an agent should be
   required to produce, and how confident output is calibrated against actual reliability.
+- **Tracking work** — *delivered 2026-08-16.* Where a project keeps work and ideas so an agent can
+  read them without an external tracker. Guide at
+  `KnowledgeBase/WorkingWithAI/backlog-in-the-repository.md`, assets in the `nomad-backlog` plugin.
 
 ### Open questions
 
@@ -55,8 +58,14 @@ The initial set, to be refined before anything is written:
   the README already notes that some practices extend to software development generally. This
   area goes further — to non-technical projects. Either the README's framing is widened, or
   this becomes an explicitly general-purpose section within a mobile-focused framework.
-- **Where domain-agnostic content lives.** `KnowledgeBase/` is organised around mobile delivery
-  topics. A new top-level area is likely, but its name and README category are not settled.
+- ~~**Where domain-agnostic content lives.**~~ **Settled 2026-08-16:**
+  `KnowledgeBase/WorkingWithAI/`, README category "Working with AI". The premise behind this
+  question was wrong — `KnowledgeBase/` is not organised around mobile delivery. Of its documents,
+  only the two under `Publishing/` are mobile-specific; `Requirements/`, `SpecDrivenDevelopment/`
+  and `ClaudeCode/` are already general. Adding a domain-agnostic area was not a departure needing
+  the README reframed first. The earlier `AICollaboration/` directory was consolidated into
+  `WorkingWithAI/`; the `EP-AICollaboration` epic slug is unchanged, as it is a tracking identifier
+  rather than a path.
 - **A research skill.** Discussed as a likely first concrete asset in this area; not yet
   scoped, and gets its own work item once it is.
 
@@ -64,7 +73,8 @@ The initial set, to be refined before anything is written:
 
 - [ ] Settle the project scope question and update the README framing accordingly
 - [ ] Refine the candidate topic list and fix the boundaries against WI-5 and WI-6
-- [ ] Decide where domain-agnostic content lives and add the README category
+- [x] Decide where domain-agnostic content lives and add the README category
 - [ ] Write the topics, starting with research and with cross-checking/validation
-- [ ] Package the accompanying skills and custom instructions for adoption by other projects
+- [ ] Package the accompanying skills and custom instructions for adoption by other projects —
+      done for tracking work (`nomad-backlog` plugin, 0.1.0); open for the remaining topics
 - [ ] Scope the research skill as its own work item

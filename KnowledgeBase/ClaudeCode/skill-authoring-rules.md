@@ -157,6 +157,10 @@ The description is the entire routing mechanism. It is loaded at startup; the bo
 
 State symptoms, contexts and error messages. Start with "Use when".
 
+This applies to descriptions that route. For a skill with `disable-model-invocation: true` the
+description is a label in autocomplete rather than a trigger, so it should say what the skill does;
+"Use when" is not required and the validator does not ask for it (§5.4).
+
 ### 5.2 The 300-Character Ceiling
 
 Descriptions share a budget of roughly 1% of the context window. At 300 characters, about 25
@@ -176,12 +180,45 @@ them. The ceiling is what stops that turning into padding.
 Claude only consults a skill for work it cannot easily do alone. A skill covering easy work will not
 reliably trigger *and* will not beat its baseline — it fails twice. That is a reason not to write it.
 
+### 5.4 Explicitly Invoked Skills Are Judged Differently
+
+`disable-model-invocation: true` removes a skill from routing altogether. The model never loads it on
+its own; it runs when a person types its name. That changes what the skill has to prove.
+
+§5.3 rejects skills over easy work on two grounds: they will not trigger, and they will not beat
+their baseline. The first ground disappears when there is no triggering decision to get wrong. The
+second stops being the only measure, because an explicitly invoked skill carries value the baseline
+test does not measure:
+
+- **Discoverability.** A convention recorded in a file is invisible until someone opens the file. A
+  skill appears in autocomplete, so what a project supports can be found by typing `/`.
+- **Teaching.** The list of skills tells a new contributor what this project expects to be done, and
+  in what way. A guide conveys that only to whoever reads it.
+- **Consistency and speed.** Typing `/nomad-backlog-groom` is faster than composing the paragraph it
+  stands for, and it issues the same request every time instead of a differently-worded one each
+  session.
+
+> **The bar for an explicitly invoked skill is whether a person benefits from being able to name the
+> operation** — not whether it beats a baseline.
+
+A skill that passes that test and fails the baseline test is legitimate. One that fails both is not:
+if an operation is faster to describe than to invoke, naming it is overhead. "Mark T-007 done" needs
+no skill.
+
+Two consequences follow:
+
+- **Trigger evals do not apply** (§6). There is nothing to route, and an eval measuring a description
+  that is never matched cannot fail.
+- **Action-form names are preferred** over the noun-phrase convention of §4.1, because here the name
+  is the thing being typed rather than a routing signal.
+
 ---
 
 ## 6. Evaluations
 
-**Trigger evals — always committed.** `evals/trigger_eval.json`, 20 queries, roughly half
-`should_trigger: true`.
+**Trigger evals — always committed, except where nothing routes.** `evals/trigger_eval.json`, 20
+queries, roughly half `should_trigger: true`. Skills with `disable-model-invocation: true` are exempt
+(§5.4).
 
 - Realistic and messy: real paths, names, backstory, lowercase, typos, mixed lengths.
 - Negatives must be **near-misses**. An obviously unrelated query tests nothing.
@@ -284,7 +321,8 @@ Mechanical, enforced by `nomad-skill-validator`:
 
 Judgement, requiring a model:
 
-- Is the description a good trigger, or merely accurate?
+- Is the description a good trigger, or merely accurate? For an explicitly invoked skill (§5.4),
+  does a person benefit from being able to name this operation?
 - Is the skill overfitted to its own test cases?
 - Are the degrees of freedom right for how fragile the task is?
 - Does the skill explain *why*, or only *what*?

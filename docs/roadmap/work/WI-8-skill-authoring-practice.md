@@ -3,7 +3,7 @@ status: planned
 type: feature
 priority: medium
 epic: EP-AICollaboration
-updated: 2026-08-13
+updated: 2026-08-16
 ---
 
 # WI-8 — Skill authoring practice
@@ -295,6 +295,35 @@ reason the learning reviewer proposes rather than edits.
 A validator's output is objectively verifiable, which makes it the case where committed output
 evals earn their cost.
 
+## Exercised on a real skill, 2026-08-16
+
+The baseline-first loop was run for the first time, on three proposed backlog skills
+(`nomad-backlog-capture`, `-status`, `-groom`). Three fresh agents, one seeded `BACKLOG.md` each,
+no skill available. The model assigned IDs correctly, caught a planted duplicate, resolved an
+ambiguous drop instruction with sound reasoning, and — grooming — reported a contradiction between
+two items, a broken detail link and a Now list in ID order, then declined to resolve what needed the
+user's priorities. All three skills failed their baseline. The practice works, and it is cheap:
+about ten minutes.
+
+Three things came out of it that change this work item:
+
+- **A well-designed artifact can carry what a skill would have carried.** The seed backlog states
+  its own format in its header, and the agents followed it. Every gap the runs exposed was a gap in
+  the file, not a missing skill. Worth adding to the rules as a question to ask before writing a
+  skill at all — is there a file that could hold this instead?
+- **The rules had no bar for explicitly invoked skills.** §5.3 rejects skills over easy work on two
+  grounds, one of which (won't trigger) does not apply when `disable-model-invocation: true`. Two of
+  the three skills shipped on discoverability, teaching and consistent phrasing instead. Added as
+  §5.4, with trigger evals waived and action-form names preferred.
+- **The validator carried the same gap.** It already exempted `disable-model-invocation` skills from
+  the description ceiling and from evals, but still required "Use when" — which degrades a label
+  that is read by a person in autocomplete rather than matched by a model. Fixed.
+
+Write-up: `docs/articles/what-skills-are-for.md`.
+
+Still untested: the loop on a skill that *passes* its baseline. Every arm here failed, so the
+"did this help?" half of the comparison was never exercised.
+
 ## Tasks
 
 - [x] Build the validator: mechanical script plus the judgement-level skill over it
@@ -303,7 +332,7 @@ evals earn their cost.
 - [x] Capture the writing-style observations — they turned out to be general craft rather than
       personal taste, so they went into `nomad-technical-writer` itself. No extension skill: the
       audience question is asked per document rather than recorded in a profile
-- [ ] Run the baseline-first loop on a real skill, so the practice is exercised rather than described
+- [x] Run the baseline-first loop on a real skill, so the practice is exercised rather than described
 - [ ] Split the NOMAD.Maui plugin so skills become independently installable
 - [x] Research community skill-creation skills and compare them against the official one
 - [x] Synthesize: what to adopt as-is, what to adapt, what NOMAD adds that nothing else does
