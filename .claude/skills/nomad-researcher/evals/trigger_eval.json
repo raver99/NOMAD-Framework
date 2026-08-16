@@ -1,0 +1,22 @@
+[
+  {"query": "which crash reporting sdk should we use for maui, sentry or appcenter or something else — need something that actually works offline", "should_trigger": true},
+  {"query": "can you find out what apple's actual deadline is for the new age rating questionnaire, i've seen two different dates", "should_trigger": true},
+  {"query": "is the 8mb screenshot limit real or did someone make that up? i can't find it in google's docs", "should_trigger": true},
+  {"query": "look into how other teams handle version bumping across ios and android, i want to see what's standard", "should_trigger": true},
+  {"query": "research spec driven development frameworks and tell me which ones are worth evaluating", "should_trigger": true},
+  {"query": "the blog post says maui doesn't support this but i think that changed, can you check", "should_trigger": true},
+  {"query": "what does the agent skills spec actually say about frontmatter fields, not what the blog posts say", "should_trigger": true},
+  {"query": "i need authoritative backing on 16kb page size requirements before i put it in the checklist", "should_trigger": true},
+  {"query": "compare github actions and azure pipelines for a cross platform mobile build, with real evidence not marketing", "should_trigger": true},
+  {"query": "everything i find on this is seo garbage, can you get to the actual documentation somehow", "should_trigger": true},
+  {"query": "search the codebase for where the retry policy is defined", "should_trigger": false},
+  {"query": "here's a stack trace from the crash, what's going wrong", "should_trigger": false},
+  {"query": "summarise the pipeline-structuring-strategies doc for me", "should_trigger": false},
+  {"query": "what did we decide about the description ceiling earlier in this conversation", "should_trigger": false},
+  {"query": "add this to the knowledge base under publishing", "should_trigger": false},
+  {"query": "read this pdf i downloaded and pull out the table on page 4", "should_trigger": false},
+  {"query": "check whether the build passes on the ci runner", "should_trigger": false},
+  {"query": "write the article about our skill authoring decisions", "should_trigger": false},
+  {"query": "what's the syntax for a yaml anchor again", "should_trigger": false},
+  {"query": "find all the todo comments in the repo and list them", "should_trigger": false}
+]
