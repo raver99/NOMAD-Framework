@@ -1,0 +1,12 @@
+{
+  "name": "nomad-backlog",
+  "displayName": "NOMAD Backlog",
+  "version": "0.1.0",
+  "description": "A backlog that lives in the repository as one self-describing Markdown file, with skills for capturing work and grooming what drifted",
+  "author": {
+    "name": "Roland Huhn"
+  },
+  "repository": "https://github.com/rolandhuhn/NOMAD",
+  "license": "MIT",
+  "keywords": ["backlog", "task-management", "ideas", "planning", "markdown"]
+}
