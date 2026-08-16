@@ -173,21 +173,27 @@ being In progress (§3). A human-only backlog would not need either.
 
 ## 10. The skills
 
-Two skills ship in the `nomad-backlog` plugin. Both set `disable-model-invocation: true`, so an agent
-never loads them on its own — they run when a person types their name.
+Three skills ship in the `nomad-backlog` plugin. All set `disable-model-invocation: true`, so an
+agent never loads them on its own — they run when a person types their name.
 
 | Skill | Use |
 |-------|-----|
+| `/nomad-backlog-setup` | Install the convention: seed file at the project root, section in `CLAUDE.md`. Run once |
 | `/nomad-backlog-capture <thought>` | Add work or an idea. Reads the whole file first, so an existing item is pointed out rather than duplicated and a dropped one is raised rather than revived |
 | `/nomad-backlog-groom` | Review the file. Fixes format drift and broken links; reports duplicates, contradictions, stale ideas and a Now list that has stopped being ordered |
 
-They exist for the person, not the model. Tested against the bare file with no skill available, a
-model already assigns IDs correctly, catches duplicates and resolves ambiguous instructions — so
-neither skill beats its baseline, and on the usual test neither would be written. The value is
-elsewhere: an operation with a name appears in autocomplete, which is how someone discovers the
-project supports it at all, and a named skill issues the same request every session instead of a
+Capture and groom exist for the person, not the model. Tested against the bare file with no skill
+available, a model already assigns IDs correctly, catches duplicates and resolves ambiguous
+instructions — so neither beats its baseline, and on the usual test neither would be written. The
+value is elsewhere: an operation with a name appears in autocomplete, which is how someone discovers
+the project supports it at all, and a named skill issues the same request every session instead of a
 differently-worded one. A convention that exists only in a file is invisible until someone opens the
 file.
+
+Setup is the exception, and it earns its place the ordinary way. It has failure modes — overwriting
+a backlog that already holds work, or adding the `CLAUDE.md` section twice so the project carries two
+statements of one convention — and it runs once per project, which is precisely when nobody
+remembers the steps.
 
 That is a specific exemption rather than a loophole. It applies because these skills are never routed
 by the model, which is what [Skill Authoring Rules](../ClaudeCode/skill-authoring-rules.md) §5.4
@@ -204,12 +210,18 @@ The runs behind all of this are written up in
 
 ## 11. Adopting it
 
-1. Install the plugin, or copy `plugins/nomad-backlog/assets/BACKLOG.md` to the project root.
-2. Delete the example lines. The header rules are what carry the format.
-3. Add three or four lines to the project's `CLAUDE.md`: where the file is, that the section is the
-   status, and that IDs are never reused. This is stated as fact, not as an instruction to behave a
-   certain way — an agent told to watch for capture opportunities interrupts constantly and gets
-   tuned out.
+Install the plugin and run `/nomad-backlog-setup`. It copies the seed `BACKLOG.md` to the project
+root and adds a short section to `CLAUDE.md`. It refuses to overwrite an existing backlog, and
+refuses to add the section a second time — a project with two statements of one convention has the
+drift this design exists to prevent.
+
+By hand instead: copy the seed file to the project root, delete the example lines, and paste the
+`CLAUDE.md` section from the plugin's `assets/CLAUDE-backlog-section.md`.
+
+That section records facts — where the file is, that status is the line's position, that IDs are
+never reused. It contains no instruction to behave a certain way, and adding one is a mistake worth
+naming: an agent told to watch for things worth capturing interrupts constantly, gets tuned out, and
+taxes every conversation in the project whether or not it touches the backlog.
 
 Nothing else is required. A project that installs no skills still has a working backlog.
 
@@ -238,8 +250,8 @@ Nothing else is required. A project that installs no skills still has a working 
 4. **Priority is position in Now**, and Now is short.
 5. **A detail file is earned**, not issued with every item.
 6. **Dropped items stay**, or the next agent re-proposes them.
-7. **Two explicitly invoked skills**, there to be discoverable rather than to instruct the model.
-   Marking work done needs neither.
+7. **Three explicitly invoked skills** — setup, capture, groom. Capture and groom are there to be
+   discoverable rather than to instruct the model. Marking work done needs neither.
 
 ---
 

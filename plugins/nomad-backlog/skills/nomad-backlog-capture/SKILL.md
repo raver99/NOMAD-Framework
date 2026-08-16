@@ -8,7 +8,7 @@ arguments:
     required: false
 allowed-tools: Read, Edit, Glob, Grep
 metadata:
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # Capture a Backlog Item

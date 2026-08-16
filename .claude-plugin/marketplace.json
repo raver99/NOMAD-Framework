@@ -17,8 +17,8 @@
     {
       "name": "nomad-backlog",
       "source": "./plugins/nomad-backlog",
-      "description": "A backlog that lives in the repository as one self-describing Markdown file, with skills for capturing work and grooming what drifted",
-      "version": "0.1.0",
+      "description": "A backlog that lives in the repository as one self-describing Markdown file, with skills to set it up, capture work and groom what drifted",
+      "version": "0.2.0",
       "author": {
         "name": "Roland Huhn"
       }

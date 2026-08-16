@@ -4,7 +4,7 @@ description: Review the project's BACKLOG.md for drift — duplicates, contradic
 disable-model-invocation: true
 allowed-tools: Read, Edit, Glob, Grep, Bash
 metadata:
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # Groom the Backlog
