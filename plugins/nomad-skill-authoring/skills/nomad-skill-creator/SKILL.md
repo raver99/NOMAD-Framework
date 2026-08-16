@@ -2,13 +2,15 @@
 name: nomad-skill-creator
 description: Use when creating a new skill, turning a repeated workflow into a skill, improving an existing skill, or drafting a SKILL.md. Also when a skill fails to trigger reliably, or when asked to add a skill to a plugin or marketplace.
 metadata:
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # Creating Skills
 
-The rules this skill applies live in `KnowledgeBase/ClaudeCode/skill-authoring-rules.md`. Read it
-first; this file is the procedure, that file is the reasoning.
+The rules this skill applies ship in this plugin, at
+`${CLAUDE_PLUGIN_ROOT}/references/skill-authoring-rules.md` — or `../../references/` relative to this
+file, if the skill was copied out of its plugin. Read it first; this file is the procedure, that
+file is the reasoning.
 
 Writing a skill is the easy part. Knowing whether it earns its place is the hard part, and most of
 this procedure is about that.
@@ -80,6 +82,19 @@ Repeat until the feedback is empty or progress stalls. Stalling is a legitimate 
 ## 7. Validate before finishing
 
 Run the `nomad-skill-validator` skill over the result and resolve what it finds.
+
+## Does it need anything to exist in the target project?
+
+If the skill only works once something is in place — a statement in `CLAUDE.md`, a config file, a
+directory layout, an installed CLI, a credential — ship a one-time setup skill in the same plugin
+rather than instructions someone follows by hand. Hand-followed setup gets paraphrased or skipped,
+and the failure is silent: the skill looks installed and misbehaves later. Rules §10.1 covers what
+that skill has to do — guard every step, copy shipped assets verbatim, verify rather than assume,
+keep secrets out of the repository, and say what remains manual.
+
+Ask first whether the need can be designed away. Setup that exists because an artifact cannot
+describe itself is a design problem being automated instead of fixed, and a file that states its own
+conventions also serves the people who install nothing.
 
 ## Placing the skill
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mechanical checks from KnowledgeBase/ClaudeCode/skill-authoring-rules.md §11."""
+"""Mechanical checks from ../../references/skill-authoring-rules.md §11."""
 
 import json
 import re

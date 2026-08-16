@@ -2,7 +2,7 @@
 name: nomad-skill-validator
 description: Use when a SKILL.md has been written or changed, before publishing a skill, or when asked to review, check or validate a skill. Symptoms include a description over budget, dangling skill references, version drift, shouted rules, generic reference filenames.
 metadata:
-  version: 0.1.0
+  version: 0.2.0
 ---
 
 # Validating Skills
@@ -11,14 +11,16 @@ Review a skill against NOMAD's rules and report what is wrong. Report, do not re
 that edits starts fixing instead of reporting, and the finding is lost along with the chance to
 decide whether the rule or the skill is wrong.
 
-The canonical rules live in `KnowledgeBase/ClaudeCode/skill-authoring-rules.md`. Read it before
-judging anything, and cite the section a finding comes from so the author can check the reasoning
-rather than take the verdict on faith.
+The canonical rules ship in this plugin, at
+`${CLAUDE_PLUGIN_ROOT}/references/skill-authoring-rules.md` — or `../../references/` relative to this
+file, if the skill was copied out of its plugin. Read it before judging anything, and cite the
+section a finding comes from so the author can check the reasoning rather than take the verdict on
+faith.
 
 ## Run the mechanical checks first
 
 ```bash
-python3 .claude/skills/nomad-skill-validator/scripts/check_skill.py <skill-directory>
+python3 "${CLAUDE_PLUGIN_ROOT}/skills/nomad-skill-validator/scripts/check_skill.py" <skill-directory>
 ```
 
 It exits non-zero when any check fails, so it works unattended in CI. It covers what is decidable by
@@ -35,7 +37,14 @@ The script checks form. These need reading, and they are where real problems liv
 
 **Does the description route, or merely describe?** Accuracy is not the bar. Ask what a user would
 actually type when they need this, and whether those words appear. A description can be true and
-still never match anything.
+still never match anything. For a skill with `disable-model-invocation: true` the description is a
+label read by a person in autocomplete, so ask instead whether it says what the skill does — and
+whether naming the operation helps anyone at all (rules §5.4).
+
+**Does it need something the package does not install?** If the skill only works once a `CLAUDE.md`
+statement, a config file, a credential or a tool exists in the project, and nothing ships to put it
+there, the setup gets followed by hand and eventually skipped — silently, because the skill looks
+installed. Rules §10.1.
 
 **Is the skill overfitted to its own examples?** Look for instructions that only make sense for one
 project, one file layout, one naming convention. Authoring pressure produces this: you iterate on
