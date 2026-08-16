@@ -1,6 +1,5 @@
 {
   "name": "nomad-skill-authoring",
-  "displayName": "NOMAD Skill Authoring",
   "version": "0.2.0",
   "description": "Write and validate Claude Code skills against a canonical rule set",
   "author": {
@@ -8,5 +7,9 @@
   },
   "repository": "https://github.com/raver99/NOMAD-Framework",
   "license": "MIT",
-  "keywords": ["skills", "authoring", "validation"]
+  "keywords": [
+    "skills",
+    "authoring",
+    "validation"
+  ]
 }

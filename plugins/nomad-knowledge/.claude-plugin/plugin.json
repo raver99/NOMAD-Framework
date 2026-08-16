@@ -1,6 +1,5 @@
 {
   "name": "nomad-knowledge",
-  "displayName": "NOMAD Knowledge Management",
   "version": "0.5.0",
   "description": "Research that records its sources, and a capture step that files the durable findings into a knowledge base",
   "author": {

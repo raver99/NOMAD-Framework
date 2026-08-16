@@ -1,6 +1,5 @@
 {
   "name": "nomad-backlog",
-  "displayName": "NOMAD Backlog",
   "version": "0.2.0",
   "description": "A backlog that lives in the repository as one self-describing Markdown file, with skills to set it up, capture work and groom what drifted",
   "author": {
@@ -8,5 +7,11 @@
   },
   "repository": "https://github.com/raver99/NOMAD-Framework",
   "license": "MIT",
-  "keywords": ["backlog", "task-management", "ideas", "planning", "markdown"]
+  "keywords": [
+    "backlog",
+    "task-management",
+    "ideas",
+    "planning",
+    "markdown"
+  ]
 }
