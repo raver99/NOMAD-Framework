@@ -82,6 +82,7 @@ Head over to the repo to find out all the details https://github.com/raver99/NOM
 | AgentVibes | Text-to-Speech voice feedback for AI coding agent sessions | [View](KnowledgeBase/ClaudeCode/agent-vibes-tts-setup.md) |
 | Skills | Creating, organizing, and scaling a Claude Code skill library | [View](KnowledgeBase/ClaudeCode/claude-code-skills.md) |
 | Skill Authoring Rules | The canonical rule set for writing, testing and reviewing skills | [View](KnowledgeBase/ClaudeCode/skill-authoring-rules.md) |
+| Output Styles | Controlling how Claude responds, how a style binds to a session, and why adherence fades over a long conversation | [View](KnowledgeBase/ClaudeCode/output-styles.md) |
 
 # Plugins
 
